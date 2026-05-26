@@ -23,6 +23,8 @@ public class Menu{
 
         int opcao;
 
+        //Definindo o menu inicial
+
         do{
             System.out.println("=== Feira Local ===");
             System.out.println("1- Buscar produtos");
@@ -36,8 +38,10 @@ public class Menu{
             opcao = sc.nextInt();
             sc.nextLine();
 
+            // Switch-Case para cada opção selecionada acima
+
             switch(opcao){
-                case 1:
+                case 1: // Busca de prodrutos pelo nome
                     System.out.print("Buscar Produto: ");
                     String busca = sc.nextLine();
 
@@ -60,7 +64,7 @@ public class Menu{
                                 " | Produtor: " + produto.getProdutor().getNome()
                             );
                         }
-                        System.out.print("Ordenar por preço? (s/n): ");
+                        System.out.print("Ordenar por preço? (s/n): "); //Validação se o usuário quer ordenar por valor
                         String resposta = sc.nextLine();
 
                         if (resposta.equalsIgnoreCase("s")){
@@ -81,7 +85,7 @@ public class Menu{
                             }
                         }
 
-                        System.out.print("Deseja ver detalhes de algum produtor? (digite o número ou 0): ");
+                        System.out.print("Deseja ver detalhes de algum produtor? (digite o número ou 0): "); // Validação se o 
                         int escolha = sc.nextInt();
                         sc.nextLine();
 

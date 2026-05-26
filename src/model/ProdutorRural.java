@@ -35,10 +35,13 @@ public class ProdutorRural extends Produtor {
         this.tipoProducao = tipoProducao;
     }
 
+    // Polimorfismo do método toString
+    @Override
     public String toString() {
         return super.toString() + "\nEspecialidade: " + especialidade + "\nTipo de Produção: " + tipoProducao;
     }
 
+    // Polimorfismo do método de Exibir Descrição
     @Override
     public String exibirDescricao() {
     return "Produtor Rural: " + getNome()
