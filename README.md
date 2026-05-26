@@ -1,7 +1,7 @@
 # FeiraLocal - Sistema de Comércio Local
 
 ## Descrição
-O FeiraLocal é um sistema desenvolvido em Java para conectar pequenos produtores rurais, artesãos e agricultores familiares diretamente aos consumidores, diminuindo a necessidade de intermediários, facilitando a venda de produtos locais e promovendo a economia regional.
+O FeiraLocal é um sistema desenvolvido em Java para conectar pequenos produtores rurais, artesãos e agricultores familiares diretamente aos consumidores, diminuindo a necessidade de intermediários, facilitando a venda de produtos diretamente ao consumidor final e promovendo a economia regional.
 
 ## Funcionalidades
 - Cadastro de produtores
