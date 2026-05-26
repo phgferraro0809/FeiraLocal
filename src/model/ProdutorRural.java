@@ -38,4 +38,12 @@ public class ProdutorRural extends Produtor {
     public String toString() {
         return super.toString() + "\nEspecialidade: " + especialidade + "\nTipo de Produção: " + tipoProducao;
     }
+
+    @Override
+    public String exibirDescricao() {
+    return "Produtor Rural: " + getNome()
+            + "\nDescrição: " + getDescricao()
+            + "\nEspecialidade: " + especialidade
+            + "\nTipo de produção: " + tipoProducao;
+    }
 }

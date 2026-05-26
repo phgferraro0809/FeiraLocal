@@ -26,7 +26,7 @@ public class Produto {
 
     //Método toString
     public String toString() {
-        return "Id: " + id + "\nNome: " + nome + "\nPreco: " + preco + "\nUnidade: " + unidade + "\nQuantidade Disponivel: " + quantidadeDisponivel + "\nSafra: " + safra;
+        return "\nNome: " + nome + "\nPreco: " + preco + "\nUnidade: " + unidade + "\nQuantidade Disponivel: " + quantidadeDisponivel + "\nSafra: " + safra;
     }
 
     //Getters e Setters

@@ -10,16 +10,15 @@ public class Produtor {
     private String telefone;
     private String email;
     private String descricao;
+    private String formasPagamento;
 
     private ArrayList<Produto> produtos;
     private ArrayList<Avaliacao> avaliacoes;
-    private ArrayList<String> formasPagamento;
 
     //Construtores
     public Produtor() {
         produtos = new ArrayList<>();
         avaliacoes = new ArrayList<>();
-        formasPagamento = new ArrayList<>();
     }
 
     public Produtor(int id, String nome, String regiao, String telefone, String email, String descricao, String formasPagamento) {
@@ -29,15 +28,15 @@ public class Produtor {
         this.telefone = telefone;
         this.email = email;
         this.descricao = descricao;
+        this.formasPagamento = formasPagamento;
 
-        this.formasPagamento = new ArrayList<>();
         this.produtos = new ArrayList<>();
         this.avaliacoes = new ArrayList<>();
     }
 
     //Método toString
     public String toString() {
-        return "\nID: " + id + "\nNome: " + nome + "\nRegião: " + regiao + "\nTelefone: " + telefone + "\nEmail: " + email + "\nDescrição: " + descricao;
+        return "\nNome: " + nome + "\nRegião: " + regiao + "\nTelefone: " + telefone + "\nEmail: " + email + "\nDescrição: " + descricao;
     }
 
     //GETTERS E SETTERS
@@ -95,11 +94,11 @@ public class Produtor {
     }
 
 
-     public ArrayList<String> getFormasPagamento() {
+     public String getFormasPagamento() {
         return formasPagamento;
     }
 
-    public void setFormasPagamento(ArrayList<String> formasPagamento) {
+    public void setFormasPagamento(String formasPagamento) {
         this.formasPagamento = formasPagamento;
     }
 
@@ -120,6 +119,10 @@ public class Produtor {
 
     public void setAvaliacoes(ArrayList<Avaliacao> avaliacoes) {
         this.avaliacoes = avaliacoes;
+    }
+
+    public String exibirDescricao() {
+    return "Produtor: " + nome + "\nDescrição: " + descricao;
     }
 
 }

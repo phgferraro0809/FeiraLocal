@@ -23,10 +23,10 @@ O FeiraLocal é um sistema desenvolvido em Java para conectar pequenos produtore
 `git clone https://github.com/usuario/feiralocal.git`
 
 2. Compile:
-`javac src/*.java`
+`javac -d bin src/model/*.java src/service/*.java src/view/*.java`
 
 3. Execute:
-`java src/Main`
+`java -cp bin view.Main`
 
 ## Autores
 - Pedro Henrique Garcia Ferraro - RA: 1252321364  
