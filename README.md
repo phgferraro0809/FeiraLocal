@@ -20,7 +20,7 @@ O FeiraLocal é um sistema desenvolvido em Java para conectar pequenos produtore
 
 ## Como executar
 1. Clone o repositório:
-`git clone https://github.com/usuario/feiralocal.git`
+`git clone https://github.com/phgferraro0809/FeiraLocal.git`
 
 2. Compile:
 `javac -d bin src/model/*.java src/service/*.java src/view/*.java`
