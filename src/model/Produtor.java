@@ -93,16 +93,13 @@ public class Produtor {
         this.descricao = descricao;
     }
 
-
-     public String getFormasPagamento() {
+    public String getFormasPagamento() {
         return formasPagamento;
     }
 
     public void setFormasPagamento(String formasPagamento) {
         this.formasPagamento = formasPagamento;
     }
-
-
 
     public ArrayList<Produto> getProdutos() {
         return produtos;
@@ -121,6 +118,7 @@ public class Produtor {
         this.avaliacoes = avaliacoes;
     }
 
+    // Método para exibir a Descrição do produtor
     public String exibirDescricao() {
     return "Produtor: " + nome + "\nDescrição: " + descricao;
     }

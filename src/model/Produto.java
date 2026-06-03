@@ -7,26 +7,30 @@ public class Produto {
     private double preco;
     private String unidade;
     private int quantidadeDisponivel;
-    private String safra;
     private Produtor produtor;
+    private Categoria categoria;
 
     //Construtores
     public Produto() {
     }
 
-    public Produto(int id, String nome, double preco, String unidade, int quantidadeDisponivel, String safra, Produtor produtor) {
+    public Produto(int id, String nome, double preco, String unidade, int quantidadeDisponivel, Produtor produtor) {
         this.id = id;
         this.nome = nome;
         this.preco = preco;
         this.unidade = unidade;
         this.quantidadeDisponivel = quantidadeDisponivel;
-        this.safra = safra;
         this.produtor = produtor;
     }
 
     //Método toString
+    @Override
     public String toString() {
-        return "\nNome: " + nome + "\nPreco: " + preco + "\nUnidade: " + unidade + "\nQuantidade Disponivel: " + quantidadeDisponivel + "\nSafra: " + safra;
+        return exibirDescricao();
+    }
+
+    public String exibirDescricao() {
+    return "\nNome: " + nome + "\nCategoria: " + getNomeCategoria() + "\nPreco: " + preco + "\nUnidade: " + unidade + "\nQuantidade Disponivel: " + quantidadeDisponivel;
     }
 
     //Getters e Setters
@@ -70,20 +74,28 @@ public class Produto {
         this.quantidadeDisponivel = quantidadeDisponivel;
     }
 
-    public String getSafra() {
-        return safra;
-    }
-
-    public void setSafra(String safra) {
-        this.safra = safra;
-    }
-
     public Produtor getProdutor() {
         return produtor;
     }
 
     public void setProdutor(Produtor produtor) {
         this.produtor = produtor;
+    }
+
+    public Categoria getCategoria(){
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria){
+        this.categoria = categoria;
+    }
+
+    public String getNomeCategoria(){
+        if (categoria == null){
+            return "Sem Categoria";
+        }
+
+        return categoria.getNome();
     }
 
 }

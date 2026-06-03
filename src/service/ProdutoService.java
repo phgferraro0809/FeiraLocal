@@ -1,5 +1,6 @@
 package service;
 
+import java.text.Normalizer;
 import java.util.ArrayList;
 import model.Produto;
 import model.Produtor;
@@ -31,7 +32,7 @@ public class ProdutoService {
 
         for (Produto produto : produtor.getProdutos()) {
 
-            System.out.println(produto);
+            System.out.println(produto.exibirDescricao());
 
         }
 
@@ -46,7 +47,7 @@ public class ProdutoService {
 
             for (Produto produto : produtor.getProdutos()) {
 
-                if (produto.getNome().equalsIgnoreCase(nome)) {
+                if (normalizarTexto(produto.getNome()).equals(normalizarTexto(nome))) {
 
                     encontrados.add(produto);
 
@@ -57,6 +58,38 @@ public class ProdutoService {
         }
 
         return encontrados;
+    }
+
+    public ArrayList<Produto> buscarPorCategoria(String nomeCategoria) {
+
+        ArrayList<Produto> produtosEncontrados = new ArrayList<>();
+
+        for (Produtor produtor : produtorService.getProdutores()) {
+
+            for (Produto produto : produtor.getProdutos()) {
+
+                if (produto.getCategoria() != null &&
+                    normalizarTexto(produto.getCategoria().getNome()).equals(normalizarTexto(nomeCategoria)) &&
+                    !produtoJaFoiAdicionado(produtosEncontrados, produto.getNome())) {
+
+                    produtosEncontrados.add(produto);
+                }
+            }
+        }
+
+        return produtosEncontrados;
+    }
+
+    private boolean produtoJaFoiAdicionado(ArrayList<Produto> produtos, String nomeProduto) {
+
+        for (Produto produto : produtos) {
+
+            if (normalizarTexto(produto.getNome()).equals(normalizarTexto(nomeProduto))) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     // DELETE
@@ -111,5 +144,17 @@ public class ProdutoService {
     );
 
     }
+
+    private String normalizarTexto(String texto) {
+    if (texto == null) {
+        return "";
+    }
+
+    return Normalizer
+            .normalize(texto, Normalizer.Form.NFD)
+            .replaceAll("\\p{M}", "")
+            .toLowerCase()
+            .trim();
+}
 
 }

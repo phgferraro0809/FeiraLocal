@@ -7,6 +7,10 @@ public class Categoria {
     private String descricao;
 
     //Construtores
+
+    public Categoria(){
+    }
+
     public Categoria(int id, String nome, String descricao) {
         this.id = id;
         this.nome = nome;
@@ -14,6 +18,7 @@ public class Categoria {
     }
 
     //Método toString
+    @Override
     public String toString() {
         return "Id: " + id + "\nNome: " + nome + "\nDescricao: " + descricao;
     }
