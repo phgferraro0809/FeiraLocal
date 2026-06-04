@@ -359,7 +359,6 @@ public class Menu{
                     System.out.print("Unidade: ");
                     String unidade = sc.nextLine();
 
-                    System.out.print("Quantidade disponível: ");
                     int quantidadeDisponivel = lerInteiro("Quantidade disponível: ");
 
                     if (quantidadeDisponivel < 0) {

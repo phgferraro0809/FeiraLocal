@@ -126,8 +126,22 @@ public class Main {
                 true
         );
 
+        Artesao a3 = new Artesao(
+                11,
+                "Drix Atelier e Escola de Cerâmica",
+                "Zona Sul",
+                "(11)99467-6451",
+                "agferraro71@gmail.com",
+                "Artesanato em cerâmica de alta temperatura, utilitários e peças de decoração",
+                "Pix e Dinheiro",
+                "Cerâmica",
+                "Argila",
+                true
+        );
+
         produtorService.cadastrarProdutor(a1);
         produtorService.cadastrarProdutor(a2);
+        produtorService.cadastrarProdutor(a3);
 
         // Criando os produtos rurais e atribuindo aos respectivos produtores
 
@@ -216,6 +230,10 @@ public class Main {
         Produto prod25 = new ProdutoArtesanal(25, "Sousplat de crochê", 18.00, "unidade", 20, a2, "Linha de algodão", "2 dias");
         Produto prod26 = new ProdutoArtesanal(26, "Bolsa artesanal", 75.00, "unidade", 3, a2, "Linha de algodão", "7 dias");
 
+        Produto prod36 = new ProdutoArtesanal(36, "Pratos de Sobremesa", 240.00, "Kit com 6", 1, a3, "Argila", "14 dias");
+        Produto prod37 = new ProdutoArtesanal(37, "Xícara de Café", 37.00, "unidade", 4, a3, "Argila", "10 dias");
+        Produto prod38 = new ProdutoArtesanal(38, "Porta Jóias", 75.00, "unidade", 3, a3, "Argila", "20 dias");
+
         prod21.setCategoria(categoriaCeramica);
         prod22.setCategoria(categoriaCeramica);
         prod23.setCategoria(categoriaCeramica);
@@ -224,6 +242,10 @@ public class Main {
         prod25.setCategoria(categoriaCroche);
         prod26.setCategoria(categoriaCroche);
 
+        prod36.setCategoria(categoriaCeramica);
+        prod37.setCategoria(categoriaCeramica);
+        prod38.setCategoria(categoriaCeramica);
+
         produtoService.adicionarProduto(a1, prod21);
         produtoService.adicionarProduto(a1, prod22);
         produtoService.adicionarProduto(a1, prod23);
@@ -231,6 +253,10 @@ public class Main {
         produtoService.adicionarProduto(a2, prod24);
         produtoService.adicionarProduto(a2, prod25);
         produtoService.adicionarProduto(a2, prod26);
+
+        produtoService.adicionarProduto(a3, prod36);
+        produtoService.adicionarProduto(a3, prod37);
+        produtoService.adicionarProduto(a3, prod38);
 
         // Cadastrando avaliações para os produtores
 
@@ -311,10 +337,24 @@ public class Main {
                 "3 dias"
         );
 
+        Padeiro pa4 = new Padeiro(
+                12,
+                "Ferraro's Bakery",
+                "Zona Sul",
+                "(11)98577-5069",
+                "rgferraro@gmail.com",
+                "Pães artesanais de fermentação natural",
+                "Pix e Dinheiro",
+                "Pães Artesanais",
+                true,
+                "2 dias"
+        );
+
         // Cadastrando padeiros
         produtorService.cadastrarProdutor(pa1);
         produtorService.cadastrarProdutor(pa2);
         produtorService.cadastrarProdutor(pa3);
+        produtorService.cadastrarProdutor(pa4);
 
 
         // ===============================
@@ -429,6 +469,42 @@ public class Main {
                 false
         );
 
+        Produto prod39 = new ProdutoPanificado(
+                39,
+                "Pão Italiano",
+                25.00,
+                "unidade",
+                7,
+                pa4,
+                "03/06/2026",
+                "10/06/2026",
+                true
+        );
+
+        Produto prod40 = new ProdutoPanificado(
+                40,
+                "Tortano",
+                60.00,
+                "unidade",
+                8,
+                pa4,
+                "03/06/2026",
+                "10/06/2026",
+                true
+        );
+
+        Produto prod41 = new ProdutoPanificado(
+                41,
+                "Pão rústico multigrãos",
+                35.00,
+                "unidade",
+                9,
+                pa4,
+                "03/06/2026",
+                "10/06/2027",
+                true
+        );
+
         prod27.setCategoria(categoriaPaes);
         prod28.setCategoria(categoriaBolos);
         prod29.setCategoria(categoriaPaes);
@@ -440,6 +516,10 @@ public class Main {
         prod33.setCategoria(categoriaBolos);
         prod34.setCategoria(categoriaBolos);
         prod35.setCategoria(categoriaDoces);
+
+        prod39.setCategoria(categoriaPaes);
+        prod40.setCategoria(categoriaPaes);
+        prod41.setCategoria(categoriaPaes);
 
         // Cadastrando produtos nos respectivos padeiros
         produtoService.adicionarProduto(pa1, prod27);
@@ -454,6 +534,9 @@ public class Main {
         produtoService.adicionarProduto(pa3, prod34);
         produtoService.adicionarProduto(pa3, prod35);
 
+        produtoService.adicionarProduto(pa4, prod39);
+        produtoService.adicionarProduto(pa4, prod40);
+        produtoService.adicionarProduto(pa4, prod41);
 
         // ===============================
         // AVALIAÇÕES DOS PADEIROS
