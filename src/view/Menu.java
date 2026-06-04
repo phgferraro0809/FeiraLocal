@@ -349,7 +349,6 @@ public class Menu{
                     System.out.print("Nome do produto: ");
                     String nomeProduto = sc.nextLine();
 
-                    System.out.print("Preço: ");
                     double preco = lerDouble("Preço: ");
 
                     if (preco <= 0) {
