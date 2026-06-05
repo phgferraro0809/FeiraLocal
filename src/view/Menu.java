@@ -30,23 +30,51 @@ public class Menu{
 
         int opcao;
 
-        //Definindo o menu inicial
+        do {
+            System.out.println("=== FEIRA LOCAL ===");
+            System.out.println("1 - Entrar como consumidor");
+            System.out.println("2 - Entrar como produtor");
+            System.out.println("3 - Sair");
 
-        do{
-            System.out.println("=== Feira Local ===");
-            System.out.println("1- Buscar produtos");
-            System.out.println("2- Buscar por região");
-            System.out.println("3- Cadastrar Produtor");
-            System.out.println("4- Cadastrar Produto");
-            System.out.println("5- Avaliar Produtor");
-            System.out.println("6- Buscar por Categoria");
-            System.out.println("7- Sair");
             opcao = lerInteiro("Escolha: ");
 
-            // Switch-Case para cada opção selecionada acima
+            switch (opcao) {
 
-            switch(opcao){
-                case 1: // Busca de prodrutos pelo nome
+                case 1:
+                    menuConsumidor();
+                    break;
+
+                case 2:
+                    menuProdutor();
+                    break;
+
+                case 3:
+                    System.out.println("Encerrando...");
+                    break;
+
+                default:
+                    System.out.println("Opção inválida.");
+                    break;
+            }
+
+        } while (opcao != 3);
+
+    }
+
+    public void menuConsumidor(){
+        int opcao;
+
+        do{
+            System.out.println("=== Menu Consumidor ===");
+            System.out.println("1 -Buscar Produtos");
+            System.out.println("2- Buscar por Região");
+            System.out.println("3- Buscar por Categoria");
+            System.out.println("4- Avaliar Produtor");
+            System.out.println("5- Voltar");
+            opcao = lerInteiro("Escolha: ");
+
+            switch (opcao){
+                case 1:
                     System.out.print("Buscar Produto: ");
                     String busca = sc.nextLine();
 
@@ -104,7 +132,6 @@ public class Menu{
                 break;
 
                 case 2:
-
                     System.out.print("Buscar por região: ");
                     String regiao = sc.nextLine();
 
@@ -165,7 +192,127 @@ public class Menu{
                 break;
 
                 case 3:
+                    System.out.println("=== BUSCAR POR CATEGORIA ===");
 
+                    System.out.print("Digite a categoria: ");
+                    String categoriaBusca = sc.nextLine();
+
+                    ArrayList<Produto> produtosPorCategoria = produtoService.buscarPorCategoria(categoriaBusca);
+
+                    if (produtosPorCategoria.isEmpty()) {
+
+                        System.out.println("Nenhum produto encontrado nessa categoria.");
+
+                    } else {
+
+                        System.out.println("PRODUTOS ENCONTRADOS:");
+
+                        for (int i = 0; i < produtosPorCategoria.size(); i++) {
+
+                            Produto produto = produtosPorCategoria.get(i);
+
+                            System.out.println(
+                                (i + 1) + " - " +
+                                produto.getNome()
+                            );
+                        }
+                    }
+
+                break;
+
+                case 4:
+                    System.out.println("=== AVALIAR PRODUTOR ===");
+
+                    if (produtorService.listaVazia()) {
+
+                        System.out.println("Nenhum produtor cadastrado.");
+                        break;
+                    }
+
+                    System.out.println("PRODUTORES:");
+
+                    for (int i = 0; i < produtorService.getProdutores().size(); i++) {
+
+                        Produtor produtorAtual =
+                            produtorService.getProdutores().get(i);
+
+                        System.out.println(
+                            (i + 1) + " - " +
+                            produtorAtual.getNome()
+                        );
+                    }
+
+                    int escolhaAvaliacao = lerInteiro("Escolha o produtor: ");
+
+                    if (
+                        escolhaAvaliacao > 0 &&
+                        escolhaAvaliacao <= produtorService.getProdutores().size()
+                    ) {
+
+                        Produtor produtorEscolhido =
+                            produtorService.getProdutores().get(escolhaAvaliacao - 1);
+
+                        System.out.print("Nome do avaliador: ");
+                        String nomeAvaliador = sc.nextLine();
+
+                        int nota = lerInteiro("Nota (1 a 5): ");
+
+                        if (nota < 1 || nota > 5) {
+                            System.out.println("Nota inválida. Digite uma nota de 1 a 5.");
+                            break;
+                        }
+
+                        System.out.print("Comentário: ");
+                        String comentario = sc.nextLine();
+
+                        Avaliacao avaliacao = new Avaliacao(
+                            produtorEscolhido.getAvaliacoes().size() + 1,
+                            produtorEscolhido,
+                            nomeAvaliador,
+                            nota,
+                            comentario,
+                            "23/05/2026"
+                        );
+
+                        produtorService.adicionarAvaliacao(
+                            produtorEscolhido.getId(),
+                            avaliacao
+                        );
+
+                    } else {
+
+                        System.out.println("Produtor inválido.");
+                    }
+
+                break;
+
+                case 5:
+                    System.out.println("Voltando ao menu principal...");
+
+                break;
+
+                default:
+                    System.out.println("Opção inválida.");
+
+                break;
+
+
+            }
+        }while (opcao != 5);
+    }
+
+    public void menuProdutor(){
+        int opcao;
+
+        do{
+            System.out.println("=== Menu Produtor");
+            System.out.println("1- Cadastrar Produtor");
+            System.out.println("2- Cadastrar Produto");
+            System.out.println("3- Voltar");
+            opcao = lerInteiro("Escolha: ");
+
+            switch (opcao){
+                case 1:
                     System.out.println("=== CADASTRAR PRODUTOR ===");
 
                     System.out.println("Tipo de produtor:");
@@ -288,8 +435,7 @@ public class Menu{
 
                 break;
 
-                case 4: {
-
+                case 2:
                     System.out.println("=== CADASTRAR PRODUTO ===");
 
                     if (produtorService.listaVazia()) {
@@ -459,118 +605,19 @@ public class Menu{
 
                     System.out.println("Produto cadastrado com sucesso!");
 
-                    break;
-                }                
-                case 5:
-
-                    System.out.println("=== AVALIAR PRODUTOR ===");
-
-                    if (produtorService.listaVazia()) {
-
-                        System.out.println("Nenhum produtor cadastrado.");
-                        break;
-                    }
-
-                    System.out.println("PRODUTORES:");
-
-                    for (int i = 0; i < produtorService.getProdutores().size(); i++) {
-
-                        Produtor produtorAtual =
-                            produtorService.getProdutores().get(i);
-
-                        System.out.println(
-                            (i + 1) + " - " +
-                            produtorAtual.getNome()
-                        );
-                    }
-
-                    int escolhaAvaliacao = lerInteiro("Escolha o produtor: ");
-
-                    if (
-                        escolhaAvaliacao > 0 &&
-                        escolhaAvaliacao <= produtorService.getProdutores().size()
-                    ) {
-
-                        Produtor produtorEscolhido =
-                            produtorService.getProdutores().get(escolhaAvaliacao - 1);
-
-                        System.out.print("Nome do avaliador: ");
-                        String nomeAvaliador = sc.nextLine();
-
-                        System.out.print("Nota (1 a 5): ");
-                        int nota = lerInteiro("Nota (1 a 5): ");
-
-                        if (nota < 1 || nota > 5) {
-                            System.out.println("Nota inválida. Digite uma nota de 1 a 5.");
-                            break;
-                        }
-
-                        System.out.print("Comentário: ");
-                        String comentario = sc.nextLine();
-
-                        Avaliacao avaliacao = new Avaliacao(
-                            produtorEscolhido.getAvaliacoes().size() + 1,
-                            produtorEscolhido,
-                            nomeAvaliador,
-                            nota,
-                            comentario,
-                            "23/05/2026"
-                        );
-
-                        produtorService.adicionarAvaliacao(
-                            produtorEscolhido.getId(),
-                            avaliacao
-                        );
-
-                    } else {
-
-                        System.out.println("Produtor inválido.");
-                    }
-
                 break;
 
-                case 6:
-
-                    System.out.println("=== BUSCAR POR CATEGORIA ===");
-
-                    System.out.print("Digite a categoria: ");
-                    String categoriaBusca = sc.nextLine();
-
-                    ArrayList<Produto> produtosPorCategoria = produtoService.buscarPorCategoria(categoriaBusca);
-
-                    if (produtosPorCategoria.isEmpty()) {
-
-                        System.out.println("Nenhum produto encontrado nessa categoria.");
-
-                    } else {
-
-                        System.out.println("PRODUTOS ENCONTRADOS:");
-
-                        for (int i = 0; i < produtosPorCategoria.size(); i++) {
-
-                            Produto produto = produtosPorCategoria.get(i);
-
-                            System.out.println(
-                                (i + 1) + " - " +
-                                produto.getNome()
-                            );
-                        }
-                    }
-
-                break;
-
-                case 7:
-                    System.out.println("Encerrando...");
-
+                case 3:
+                    System.out.println("Voltando ao menu principal...");
                 break;
 
                 default:
-                    System.out.println("Opção Inválida!");
+                    System.out.println("Opção inválida.");
                 break;
-            }
-        }while (opcao != 7);
-    }
 
+            }
+        }while (opcao != 3);
+    }
 
     private String lerSimOuNao(String mensagem) {
 
