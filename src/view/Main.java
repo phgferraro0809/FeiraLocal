@@ -94,6 +94,12 @@ public class Main {
                 "Produção sem agrotóxicos"
         );
 
+        p1.setSenha("123");
+        p2.setSenha("123");
+        p3.setSenha("123");
+        p4.setSenha("123");
+        p5.setSenha("123");
+
         produtorService.cadastrarProdutor(p1);
         produtorService.cadastrarProdutor(p2);
         produtorService.cadastrarProdutor(p3);
@@ -138,6 +144,10 @@ public class Main {
                 "Argila",
                 true
         );
+
+        a1.setSenha("123");
+        a2.setSenha("123");
+        a3.setSenha("123");
 
         produtorService.cadastrarProdutor(a1);
         produtorService.cadastrarProdutor(a2);
@@ -351,6 +361,12 @@ public class Main {
         );
 
         // Cadastrando padeiros
+
+        pa1.setSenha("123");
+        pa2.setSenha("123");
+        pa3.setSenha("123");
+        pa4.setSenha("123");
+
         produtorService.cadastrarProdutor(pa1);
         produtorService.cadastrarProdutor(pa2);
         produtorService.cadastrarProdutor(pa3);

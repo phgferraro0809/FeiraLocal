@@ -211,6 +211,34 @@ public class ProdutorService {
         return soma / produtor.getAvaliacoes().size();
     }
 
+    public boolean removerProdutor(Produtor produtor){
+        if (produtor == null){
+            return false;
+        }
+
+        return produtores.remove(produtor);
+    }
+
+    public Produtor loginProdutor(String email, String senha){
+        for (Produtor produtor : produtores){
+            if (produtor.getEmail().equalsIgnoreCase(email) && produtor.getSenha().equals(senha)){
+                return produtor;
+            }
+        }
+
+        return null;
+    }
+
+    public boolean emailCadastrado(String email){
+        for (Produtor produtor : produtores){
+            if (produtor.getEmail().equalsIgnoreCase(email)){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     // Validação
 
     // Verificar ID

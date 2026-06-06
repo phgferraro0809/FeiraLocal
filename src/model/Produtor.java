@@ -11,6 +11,7 @@ public class Produtor {
     private String email;
     private String descricao;
     private String formasPagamento;
+    private String senha;
 
     private ArrayList<Produto> produtos;
     private ArrayList<Avaliacao> avaliacoes;
@@ -116,6 +117,14 @@ public class Produtor {
 
     public void setAvaliacoes(ArrayList<Avaliacao> avaliacoes) {
         this.avaliacoes = avaliacoes;
+    }
+
+    public String getSenha(){
+        return senha;
+    }
+
+    public void setSenha(String senha){
+        this.senha = senha;
     }
 
     // Método para exibir a Descrição do produtor

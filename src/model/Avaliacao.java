@@ -24,7 +24,7 @@ public class Avaliacao {
     
     //Método toString
     public String toString() {
-        return "\nProdutor: " + produtor.getNome() + "\nConsumidor: " + nomeConsumidor + "\nNota: "+ nota + "\nComentario: " + comentario + "\nData='" + data;
+        return "\nProdutor: " + produtor.getNome() + "\nConsumidor: " + nomeConsumidor + "\nNota: "+ nota + "\nComentario: " + comentario + "\nData: " + data;
     }
 
     //Getters e Setters
